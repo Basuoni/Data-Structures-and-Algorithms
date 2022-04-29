@@ -52,17 +52,11 @@ Points* BFS(Points* root) {
 		int u = Que.front().first;
 		Points* c = Que.front().second;
 		Que.pop();
-		//cout << u << " " << c->x << " " << c->y << endl;
-		if (c->isGoal(_Goal)) {
-			//	cout << " find the goal " << endl;
+		if (c->isGoal(_Goal))
 			return c;
-		}
 		for (int x = 0; x < 8; x++)
 		{
 			Points* cur = c->moveTo(moveX[x], moveY[x]);
-			/*cout<<" in chiledren move => " << moveX[x] << " " << moveY[y] << endl;
-			cout<<" in chiledren perant => " << c.x << " " << c.y << endl;*/
-			//cout << " in chiledren => " << cur->x << " " << cur->y << endl;
 			if (cur != NULL && !vis[cur->x][cur->y])
 			{
 				vis[cur->x][cur->y] = true;
@@ -79,8 +73,6 @@ int main() {
 	cin >> inite >> goal;
 	_Goal = new Points(goal[0] - 'a' + 1, goal[1] - '0', NULL);
 	Points* root = new Points(inite[0] - 'a' + 1, inite[1] - '0', NULL);
-	//cout << _Goal->x << " " << _Goal->y << endl;
-	//cout << root->x << " " << root->y << endl;
 	Points* res = BFS(root);
 	int cnt = 0;
 	vector<string> out;
